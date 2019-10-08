@@ -10,14 +10,16 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     21560,        456]
-NotebookOptionsPosition[     21230,        442]
-NotebookOutlinePosition[     21604,        458]
-CellTagsIndexPosition[     21561,        455]
+NotebookDataLength[     31061,        681]
+NotebookOptionsPosition[     30600,        664]
+NotebookOutlinePosition[     30974,        680]
+CellTagsIndexPosition[     30931,        677]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
+
+Cell[CellGroupData[{
 Cell[BoxData[{
  RowBox[{
   RowBox[{
@@ -270,7 +272,7 @@ Cell[BoxData[{
         RowBox[{"Ataques", "[", 
          RowBox[{"ea", "[", 
           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
-        RowBox[{"Print", "[", 
+        RowBox[{"Return", "[", 
          RowBox[{"ea", "[", 
           RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
         "\[IndentingNewLine]", 
@@ -298,9 +300,76 @@ Cell[BoxData[{
            RowBox[{"f", "\[NotEqual]", 
             RowBox[{"{", "}"}]}], ",", 
            RowBox[{
-            RowBox[{"DFSL", "[", 
-             RowBox[{"f", ",", "limite"}], "]"}], ";"}]}], 
+            RowBox[{"Return", "[", 
+             RowBox[{"DFSL", "[", 
+              RowBox[{"f", ",", "limite"}], "]"}], "]"}], ";"}]}], 
           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+       "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"DFSLDos", "[", 
+    RowBox[{"ef_", ",", "limite_", ",", "v_"}], "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"f", "=", "ef"}], ",", "ea", ",", "l", ",", "off", ",", 
+       RowBox[{"$RecursionLimit", "=", "Infinity"}], ",", 
+       RowBox[{"ans", "=", "v"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"ea", "=", 
+       RowBox[{"f", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"f", "=", 
+       RowBox[{"Drop", "[", 
+        RowBox[{"f", ",", "1"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"l", "=", 
+       RowBox[{"ea", "[", 
+        RowBox[{"[", 
+         RowBox[{"1", ",", "2"}], "]"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ans", "=", 
+       RowBox[{"DeleteDuplicates", "[", 
+        RowBox[{"Append", "[", 
+         RowBox[{"ans", ",", 
+          RowBox[{"ea", "[", 
+           RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"Ataques", "[", 
+         RowBox[{"ea", "[", 
+          RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "ans", "]"}], ",", "\[IndentingNewLine]", 
+        "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"l", "=", 
+          RowBox[{"l", "+", "1"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"l", "<", "limite"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"off", "=", 
+             RowBox[{"ExpandirDos", "[", 
+              RowBox[{
+               RowBox[{"ea", "[", 
+                RowBox[{"[", "1", "]"}], "]"}], ",", "l"}], "]"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{"f", "=", 
+             RowBox[{"DeleteDuplicates", "[", 
+              RowBox[{"Join", "[", 
+               RowBox[{"f", ",", "off"}], "]"}], "]"}]}], ";"}]}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"f", "\[NotEqual]", 
+            RowBox[{"{", "}"}]}], ",", 
+           RowBox[{
+            RowBox[{"Return", "[", 
+             RowBox[{"DFSLDos", "[", 
+              RowBox[{"f", ",", "limite", ",", "ans"}], "]"}], "]"}], ";"}]}],
+           "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
        "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
@@ -308,16 +377,95 @@ Cell[BoxData[{
    RowBox[{"IDFS", "[", "l_", "]"}], ":=", 
    RowBox[{"Block", "[", 
     RowBox[{
-     RowBox[{"{", "i", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", "ans"}], "}"}], ",", "\[IndentingNewLine]", 
      RowBox[{"For", "[", 
       RowBox[{
-       RowBox[{"i", "=", "0"}], ",", 
+       RowBox[{"i", "=", "2"}], ",", 
        RowBox[{"i", "<", "Infinity"}], ",", 
        RowBox[{"i", "+=", "2"}], ",", "\[IndentingNewLine]", 
-       RowBox[{"DFSL", "[", 
-        RowBox[{"l", ",", "i"}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+       RowBox[{
+        RowBox[{"ans", "=", 
+         RowBox[{"DFSL", "[", 
+          RowBox[{"l", ",", "i"}], "]"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"ans", "\[NotEqual]", 
+           RowBox[{"{", "}"}]}], ",", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"Return", "[", "ans", "]"}], ";"}]}], 
+         "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"MostrarTablero", "[", "n_", "]"}], ":=", 
+   RowBox[{"Block", "[", 
+    RowBox[{
+     RowBox[{"{", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"tablero", "=", 
+       RowBox[{"ArrayPlot", "[", 
+        RowBox[{
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Mod", "[", 
+            RowBox[{
+             RowBox[{"j", "+", "i"}], ",", "2"}], "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "n"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"j", ",", "n"}], "}"}]}], "]"}], ",", 
+         RowBox[{"ColorRules", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"1", "\[Rule]", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{"0", ",", "0", ",", "0"}], "]"}]}], ",", 
+            RowBox[{"0", "\[Rule]", 
+             RowBox[{"RGBColor", "[", 
+              RowBox[{"255", ",", "255", ",", "255"}], "]"}]}]}], "}"}]}], 
+         ",", 
+         RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+         RowBox[{"DataRange", "\[Rule]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "n"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", "n"}], "}"}]}], "}"}]}]}], "]"}]}], ";", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"v", "=", 
+       RowBox[{"DFSLDos", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Tuples", "[", 
+              RowBox[{
+               RowBox[{"{", "1", "}"}], ",", "4"}], "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], ",", "1"}], "}"}], "}"}], ",", 
+         "n", ",", 
+         RowBox[{"{", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Manipulate", "[", 
+       RowBox[{
+        RowBox[{"Show", "[", 
+         RowBox[{"tablero", ",", 
+          RowBox[{"ListPlot", "[", 
+           RowBox[{
+            RowBox[{"v", "[", 
+             RowBox[{"[", "i", "]"}], "]"}], ",", 
+            RowBox[{"PlotStyle", "\[Rule]", 
+             RowBox[{"PointSize", "[", "0.06", "]"}]}]}], "]"}]}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"i", ",", "1", ",", 
+          RowBox[{"Length", "[", "v", "]"}], ",", "1"}], "}"}], ",", 
+        RowBox[{"SaveDefinitions", "\[Rule]", "True"}]}], "]"}]}]}], 
     "\[IndentingNewLine]", "]"}]}], "\[IndentingNewLine]", 
-  "\[IndentingNewLine]", "\[IndentingNewLine]", 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"MostrarTablero", "[", "4", "]"}], "\[IndentingNewLine]", 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]"}], "Input",
  CellChangeTimes->{{3.7783497117529297`*^9, 3.7783498019323854`*^9}, {
    3.778349952656061*^9, 3.7783500230509295`*^9}, {3.778350291459851*^9, 
@@ -436,9 +584,83 @@ Cell[BoxData[{
    3.779049865979854*^9, 3.7790498988665943`*^9}, {3.7790499475468445`*^9, 
    3.779050003175207*^9}, {3.7790524793984137`*^9, 3.779052501001393*^9}, 
    3.7790525570643945`*^9, 3.779052599604944*^9, {3.7790526451959314`*^9, 
-   3.779052689923929*^9}, 3.7791083748593655`*^9, 
-   3.779479618295661*^9},ExpressionUUID->"b1399206-dafa-486b-b119-\
-665238d40f15"]
+   3.779052689923929*^9}, 3.7791083748593655`*^9, 3.779479618295661*^9, {
+   3.779481258987033*^9, 3.7794813958860435`*^9}, {3.7794815037297697`*^9, 
+   3.779481517964245*^9}, {3.7794815702044306`*^9, 3.7794817464367*^9}, {
+   3.779481779061283*^9, 3.779481849192064*^9}, {3.779481925703046*^9, 
+   3.779481962034062*^9}, {3.779482042576866*^9, 3.7794820540678687`*^9}, 
+   3.7794821101768675`*^9, {3.7794823993909254`*^9, 3.779482453293397*^9}, {
+   3.7794824846059017`*^9, 3.7794825981686687`*^9}, {3.779482642099046*^9, 
+   3.77948274825307*^9}, {3.779482787298772*^9, 3.7794828917463408`*^9}, {
+   3.7794829259812145`*^9, 3.779482930809412*^9}, {3.779483033985752*^9, 
+   3.779483123014803*^9}, {3.779483211573821*^9, 3.779483211917698*^9}, {
+   3.779483246883033*^9, 3.779483333714696*^9}, {3.7794833944775333`*^9, 
+   3.7794834574555616`*^9}, {3.7794834893810296`*^9, 3.779483509271654*^9}, {
+   3.7794835397247705`*^9, 3.7794836049155416`*^9}, {3.7794836668092313`*^9, 
+   3.779483706746787*^9}},
+ CellLabel->
+  "In[449]:=",ExpressionUUID->"b1399206-dafa-486b-b119-665238d40f15"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`i$$ = 113, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"sin t\[IAcute]tulo\"", Typeset`specs$$ = {{
+      Hold[$CellContext`i$$], 1, 113, 1}}, Typeset`size$$ = {
+    540., {266., 273.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = False, $CellContext`i$16716$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, "Variables" :> {$CellContext`i$$ = 1}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`i$$, $CellContext`i$16716$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> Show[$CellContext`tablero, 
+        ListPlot[
+         Part[$CellContext`v, $CellContext`i$$], PlotStyle -> 
+         PointSize[0.06]]], 
+      "Specifications" :> {{$CellContext`i$$, 1, 113, 1}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{612., {329., 338.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    Initialization:>({$CellContext`tablero = Graphics[
+         Raster[
+         SparseArray[
+          Automatic, {4, 4}, 1., {
+           1, {{0, 2, 4, 6, 8}, {{1}, {3}, {2}, {4}, {1}, {3}, {2}, {4}}}, {
+            0., 0., 0., 0., 0., 0., 0., 0.}}], {{0.5, 0.5}, {4.5, 4.5}}, {0, 
+          1}], PlotRangeClipping -> True, Frame -> True, 
+         FrameLabel -> {None, None}, 
+         FrameTicks -> {{None, None}, {None, None}}, GridLinesStyle -> 
+         Directive[
+           GrayLevel[0.5, 0.4]], 
+         Method -> {
+          "DefaultBoundaryStyle" -> Automatic, "DefaultPlotStyle" -> 
+           Automatic}], $CellContext`v = CompressedData["
+1:eJxdkNkNwzAMQ21Si3SljpAFgu7/Uz3aLorERyJeEvK67velMcanT/WZ/ehx
+mUtUrN7/wK+YLq4gkUi5NNcGpeoPRIcMjPy4065KIAKVDSPYJlmJtgBEpf1C
+ggs1bBeYlZQNnwii6bIExQRNN9Jqk4LLjo2RxRxJgXXQjFYhhMPZSJeFOFJJ
+IZY5apfeEbvdZAL3HDiMS41EXZNlOjjCWCs/wKtlIKw4v7m/BbM=
+        "]}; Typeset`initDone$$ = True),
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.779483547146647*^9, {3.779483581415416*^9, 3.7794836068841524`*^9}, 
+   3.7794837085904217`*^9},
+ CellLabel->
+  "Out[458]=",ExpressionUUID->"161afe41-f5b5-4791-9ed3-155398e32329"]
+}, Open  ]]
 },
 WindowSize->{1366, 685},
 WindowMargins->{{-8, Automatic}, {Automatic, -8}},
@@ -457,7 +679,10 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 20668, 420, 3350, "Input",ExpressionUUID->"b1399206-dafa-486b-b119-665238d40f15"]
+Cell[CellGroupData[{
+Cell[580, 22, 27220, 579, 4336, "Input",ExpressionUUID->"b1399206-dafa-486b-b119-665238d40f15"],
+Cell[27803, 603, 2781, 58, 695, "Output",ExpressionUUID->"161afe41-f5b5-4791-9ed3-155398e32329"]
+}, Open  ]]
 }
 ]
 *)
